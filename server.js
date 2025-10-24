@@ -22,13 +22,13 @@ app.use(express.json());
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  console.error('❌ ERROR: Falta la variable MONGODB_URI en .env');
+  console.error('ERROR: Falta la variable MONGODB_URI en .env');
   process.exit(1);
 }
 
 mongoose.connect(MONGODB_URI)
-  .then(() => console.log('✅ Conectado a MongoDB - Base de datos de productos'))
-  .catch(err => console.error('❌ Error conectando a MongoDB:', err));
+  .then(() => console.log('Conectado a MongoDB - Base de datos de productos'))
+  .catch(err => console.error('Error conectando a MongoDB:', err));
 
 // Routes
 app.use('/api/products', productRoutes);
@@ -62,8 +62,8 @@ app.use((req, res) => {
 // Iniciar servidor
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
-  console.log(`🚀 API de Productos corriendo en puerto ${PORT}`);
-  console.log(`📝 Rutas disponibles:`);
+  console.log(`API de Productos corriendo en puerto ${PORT}`);
+  console.log(`Rutas disponibles:`);
   console.log(`   GET    /api/products - Listar todos los productos`);
   console.log(`   GET    /api/products/:id - Obtener producto por ID`);
   console.log(`   POST   /api/products - Crear producto (requiere token)`);
